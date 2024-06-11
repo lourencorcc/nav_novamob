@@ -1,0 +1,67 @@
+bt_navigator:
+  ros__parameters:
+    use_sim_time: True
+    global_frame: map
+    robot_base_frame: base_link
+    odom_topic: /odom
+    # https://navigation.ros.org/plugin_tutorials/docs/writing_new_navigator_plugin.html
+    transform_tolerance: 0.1
+    default_nav_to_pose_bt_xml: /home/lourencorcc/host_machine_ws/src/nav_novamob/behavior_trees/nav2_w_stop_resume_tree.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
+    # default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml
+    goal_blackboard_id: goal
+    goals_blackboard_id: goals
+    path_blackboard_id: path
+    navigators: ['navigate_to_pose'] #, 'navigate_through_poses']
+    navigate_to_pose:
+      plugin: "nav2_bt_navigator/NavigateToPoseNavigator"
+    # navigate_through_poses:
+    #  plugin: "nav2_bt_navigator/NavigateThroughPosesNavigator"
+
+    bt_loop_duration: 10
+    default_server_timeout: 20
+    enable_groot_monitoring: True
+    
+    groot_zmq_publisher_port: 1666
+    groot_zmq_server_port: 1667
+    # 'default_nav_through_poses_bt_xml' and 'default_nav_to_pose_bt_xml' are use defaults:
+    # nav2_bt_navigator/navigate_to_pose_w_replanning_and_recovery.xml
+    # nav2_bt_navigator/navigate_through_poses_w_replanning_and_recovery.xml
+    # They can be set here or via a RewrittenYaml remap from a parent launch file to Nav2.
+    plugin_lib_names:
+    - nav2_compute_path_to_pose_action_bt_node
+    - nav2_compute_path_through_poses_action_bt_node
+    - nav2_follow_path_action_bt_node
+    - nav2_back_up_action_bt_node
+    - nav2_spin_action_bt_node
+    - nav2_wait_action_bt_node
+    - nav2_clear_costmap_service_bt_node
+    - nav2_is_stuck_condition_bt_node
+    - nav2_goal_reached_condition_bt_node
+    - nav2_goal_updated_condition_bt_node
+    - nav2_initial_pose_received_condition_bt_node
+    - nav2_reinitialize_global_localization_service_bt_node
+    - nav2_rate_controller_bt_node
+    - nav2_distance_controller_bt_node
+    - nav2_speed_controller_bt_node
+    - nav2_truncate_path_action_bt_node
+    - nav2_goal_updater_node_bt_node
+    - nav2_recovery_node_bt_node
+    - nav2_pipeline_sequence_bt_node
+    - nav2_round_robin_node_bt_node
+    - nav2_transform_available_condition_bt_node
+    - nav2_time_expired_condition_bt_node
+    - nav2_distance_traveled_condition_bt_node
+    - nav2_single_trigger_bt_node
+    - nav2_is_battery_low_condition_bt_node
+    - nav2_navigate_through_poses_action_bt_node
+    - nav2_navigate_to_pose_action_bt_node
+    - nav2_remove_passed_goals_action_bt_node
+    - nav2_planner_selector_bt_node
+    - nav2_controller_selector_bt_node
+    - nav2_goal_checker_selector_bt_node
+    - nav2_open_gesture_detected_bt_node    # aqui supostamente
+    - nav2_closed_gesture_detected_bt_node
+    - nav2_success_bt_node    # aqui supostamente
+bt_navigator_rclcpp_node:
+  ros__parameters:
+    use_sim_time: True
