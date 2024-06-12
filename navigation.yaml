@@ -55,7 +55,9 @@ bt_navigator:
     odom_topic: /odom
     # https://navigation.ros.org/plugin_tutorials/docs/writing_new_navigator_plugin.html
     transform_tolerance: 0.1
-    default_nav_to_pose_bt_xml: /home/lourencorcc/host_machine_ws/src/nav_novamob/behavior_trees/nav2_w_stop_resume_tree.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
+    
+    # default_nav_to_pose_bt_xml: /home/lourencorcc/host_machine_ws/src/nav_novamob/behavior_trees/nav2_w_stop_resume_tree.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_to_pose_bt.xml
+    default_nav_to_pose_bt_xml: $(find-pkg-share nav_novamob)/behavior_trees/nav2_w_stop_resume_tree.xml
     # default_nav_through_poses_bt_xml: replace/with/path/to/bt.xml # or $(find-pkg-share my_package)/behavior_tree/my_nav_through_poses_bt.xml
     goal_blackboard_id: goal
     goals_blackboard_id: goals
@@ -114,6 +116,7 @@ bt_navigator:
     - nav2_stop_robot_bt_node
     - nav2_resume_nav_bt_node
     # - nav2_goal_reached_bt_node
+
 
 bt_navigator_rclcpp_node:
   ros__parameters:
