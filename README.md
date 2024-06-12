@@ -1,6 +1,8 @@
 # nav_novamob
 Novamob navigation package with gesture recognition
 
+Test in simulation:
+
 1st Terminal Window 4 terminals: 
 
 host_machine_ws: 
@@ -17,6 +19,6 @@ host_machine_ws:
 
 tese/dev_ws: 
 
-	ros2 run gesture_recognition webcam_publisher 
+	ros2 run gesture_recognition webcam_publisher  (realsense node substitutes this)
  
-	ros2 run gesture_recognition hand_gesture_node 
+	ros2 run gesture_recognition hand_gesture_node (has absolute paths)
